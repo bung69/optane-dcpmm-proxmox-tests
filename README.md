@@ -3,6 +3,27 @@
 HPE dl380 single 6230 128GB Rdimm ( 4x 32GB)  +  2X 256 optane DCPMM interleaved in app direct mode
 
 
+## Raw namespace with sectorsize 512 and xfs
+
+```
+Sequential Read: 2813MB/s IOPS=10
+Sequential Write: 3192MB/s IOPS=12
+
+512KB Read: 2983MB/s IOPS=5967
+512KB Write: 3636MB/s IOPS=7272
+
+Sequential Q32T1 Read: 2825MB/s IOPS=353
+Sequential Q32T1 Write: 3121MB/s IOPS=390
+
+4KB Read: 1239MB/s IOPS=317212
+4KB Write: 1028MB/s IOPS=263408
+
+4KB Q32T1 Read: 1267MB/s IOPS=324435
+4KB Q32T1 Write: 913MB/s IOPS=233890
+
+4KB Q8T8 Read: 7700MB/s IOPS=1971390
+4KB Q8T8 Write: 3931MB/s IOPS=1006347
+```
 
 ## fdax namespace with sectorsize 4096 xfs mounted with dax
 
