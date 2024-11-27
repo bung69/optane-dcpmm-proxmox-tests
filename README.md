@@ -5,7 +5,7 @@ HPE dl380 single 6230 128GB Rdimm ( 4x 32GB)  +  2X 256 optane DCPMM interleaved
 
 
 ## fdax namespace with sectorsize 4096 xfs mounted with dax
-
+{
   Sequential Read: 2942MB/s IOPS=11
   Sequential Write: 3368MB/s IOPS=13
   
@@ -23,3 +23,4 @@ HPE dl380 single 6230 128GB Rdimm ( 4x 32GB)  +  2X 256 optane DCPMM interleaved
   
   4KB Q8T8 Read: 9392MB/s IOPS=2404471
   4KB Q8T8 Write: 1341MB/s IOPS=343508
+}
