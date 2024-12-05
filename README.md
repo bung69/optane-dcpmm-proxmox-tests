@@ -92,3 +92,25 @@ Sequential Q32T1 Write: 222MB/s IOPS=55
 
 
 ```
+
+## fdax namespace passed to fedora VM with Dax mount 2M aligned
+
+```
+Sequential Read: 8311MB/s IOPS=32
+Sequential Write: 6183MB/s IOPS=24
+
+512KB Read: 1984MB/s IOPS=3968
+512KB Write: 1893MB/s IOPS=3786
+
+Sequential Q32T1 Read: 8590MB/s IOPS=1073
+Sequential Q32T1 Write: 10240MB/s IOPS=1280
+
+4KB Read: 55MB/s IOPS=14167
+4KB Write: 54MB/s IOPS=13840
+
+4KB Q32T1 Read: 512MB/s IOPS=131176
+4KB Q32T1 Write: 337MB/s IOPS=86299
+
+4KB Q8T8 Read: 704MB/s IOPS=180318
+4KB Q8T8 Write: 660MB/s IOPS=169208
+```
