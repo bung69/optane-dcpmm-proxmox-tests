@@ -138,3 +138,24 @@ Sequential Q32T1 Write: 3240MB/s IOPS=405
 4KB Q8T8 Read: 9366MB/s IOPS=2397834
 4KB Q8T8 Write: 1326MB/s IOPS=339499
 ```
+
+## devdax namespace passed to Rocky VM with sector namespace.  rocky installed on root with EFI and boot on qemu disk
+```
+Sequential Read: 2869MB/s IOPS=11
+Sequential Write: 925MB/s IOPS=3
+
+512KB Read: 2863MB/s IOPS=5727
+512KB Write: 930MB/s IOPS=1861
+
+Sequential Q32T1 Read: 2929MB/s IOPS=366
+Sequential Q32T1 Write: 928MB/s IOPS=116
+
+4KB Read: 1025MB/s IOPS=262564
+4KB Write: 663MB/s IOPS=169870
+
+4KB Q32T1 Read: 1207MB/s IOPS=309132
+4KB Q32T1 Write: 655MB/s IOPS=167782
+
+4KB Q8T8 Read: 7107MB/s IOPS=1819621
+4KB Q8T8 Write: 3130MB/s IOPS=801293
+```
