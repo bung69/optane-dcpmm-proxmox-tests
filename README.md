@@ -1,3 +1,6 @@
+args: -machine nvdimm=on,nvdimm-persistence=mem-ctrl -m slots=3,maxmem=650G -object memory-backend-file,id=mem1,share,mem-path=/mnt/pmem0.4,size=100G,align=128M -device nvdimm,memdev=mem1,id=nv1,label-size=2M -object memory-backend-file,id=mem2,share,mem-path=/dev/dax0.5,size=100G,align=128M -device nvdimm,memdev=mem2,id=nv2,label-size=2M
+
+
 # optane-dcpmm-proxmox-tests
 
 HPE dl380 single 6230 128GB Rdimm ( 4x 32GB)  +  2X 256 optane DCPMM interleaved in app direct mode
