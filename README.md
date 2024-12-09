@@ -116,8 +116,12 @@ Sequential Q32T1 Write: 3176MB/s IOPS=397
 
 4KB Q8T8 Read: 9433MB/s IOPS=2414965
 4KB Q8T8 Write: 1268MB/s IOPS=324658
-
-
+```
+```
+--- . (xfs /dev/pmem0.2 147.6 GiB) ioping statistics ---
+23 requests completed in 338.2 us, 92 KiB read, 68.0 k iops, 265.6 MiB/s
+generated 24 requests in 23.8 s, 96 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 6.42 us / 14.7 us / 25.7 us / 3.08 us
 ```
 
 
