@@ -125,6 +125,7 @@ Sequential Q32T1 Write: 3176MB/s IOPS=397
 4KB Q8T8 Read: 9433MB/s IOPS=2414965
 4KB Q8T8 Write: 1268MB/s IOPS=324658
 ```
+## fdax namespace passed to Rocky VM with Dax mount 2M aligned
 ```
 --- . (xfs /dev/pmem0 98.2 GiB) ioping statistics ---
 23 requests completed in 415.8 us, 92 KiB read, 55.3 k iops, 216.1 MiB/s
