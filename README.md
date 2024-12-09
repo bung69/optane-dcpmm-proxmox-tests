@@ -50,6 +50,14 @@ Sequential Q32T1 Write: 3386MB/s IOPS=423
 4KB Q8T8 Write: 1350MB/s IOPS=345745
 ```
 
+## fdax namespace with sectorsize 512 xfs mounted with dax 2M aligned
+```
+--- . (xfs /dev/pmem0.2 147.6 GiB) ioping statistics ---
+23 requests completed in 338.2 us, 92 KiB read, 68.0 k iops, 265.6 MiB/s
+generated 24 requests in 23.8 s, 96 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 6.42 us / 14.7 us / 25.7 us / 3.08 us
+```
+
 ## fdax namespace with sectorsize 4096 xfs mounted with dax
 
 ```
@@ -118,10 +126,10 @@ Sequential Q32T1 Write: 3176MB/s IOPS=397
 4KB Q8T8 Write: 1268MB/s IOPS=324658
 ```
 ```
---- . (xfs /dev/pmem0.2 147.6 GiB) ioping statistics ---
-23 requests completed in 338.2 us, 92 KiB read, 68.0 k iops, 265.6 MiB/s
-generated 24 requests in 23.8 s, 96 KiB, 1 iops, 4.04 KiB/s
-min/avg/max/mdev = 6.42 us / 14.7 us / 25.7 us / 3.08 us
+--- . (xfs /dev/pmem0 98.2 GiB) ioping statistics ---
+23 requests completed in 415.8 us, 92 KiB read, 55.3 k iops, 216.1 MiB/s
+generated 24 requests in 23.9 s, 96 KiB, 1 iops, 4.02 KiB/s
+min/avg/max/mdev = 7.88 us / 18.1 us / 28.3 us / 5.93 us
 ```
 
 
@@ -166,3 +174,11 @@ Sequential Q32T1 Write: 928MB/s IOPS=116
 4KB Q8T8 Read: 7107MB/s IOPS=1819621
 4KB Q8T8 Write: 3130MB/s IOPS=801293
 ```
+
+```
+--- . (xfs /dev/pmem1s1 49.7 GiB) ioping statistics ---
+28 requests completed in 2.03 ms, 112 KiB read, 13.8 k iops, 53.8 MiB/s
+generated 29 requests in 28.6 s, 116 KiB, 1 iops, 4.05 KiB/s
+min/avg/max/mdev = 30.6 us / 72.6 us / 89.5 us / 16.8 us
+```
+
