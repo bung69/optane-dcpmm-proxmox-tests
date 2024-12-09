@@ -5,7 +5,7 @@ args: -machine nvdimm=on,nvdimm-persistence=mem-ctrl -m slots=3,maxmem=650G -obj
 
 HPE dl380 single 6230 128GB Rdimm ( 4x 32GB)  +  2X 256 optane DCPMM interleaved in app direct mode
 
-
+# Latancy optimised bios setting
 ## Raw namespace with sectorsize 512 and xfs
 
 ```
@@ -183,3 +183,25 @@ generated 29 requests in 28.6 s, 116 KiB, 1 iops, 4.05 KiB/s
 min/avg/max/mdev = 30.6 us / 72.6 us / 89.5 us / 16.8 us
 ```
 
+# Bandwidth optimised bios setting
+## fdax namespace with sectorsize 512 xfs mounted with dax 2M aligned
+
+```
+256m Sequential Read: 1344MB/s IOPS=5
+256m Sequential Write: 5493MB/s IOPS=21
+
+512KB Read: 8258MB/s IOPS=16516
+512KB Write: 10240MB/s IOPS=20480
+
+8m Sequential Q32T1 Read: 5355MB/s IOPS=669
+8m Sequential Q32T1 Write: 6037MB/s IOPS=754
+
+4KB Read: 1212MB/s IOPS=310303
+4KB Write: 777MB/s IOPS=199076
+
+4KB Q32T1 Read: 1430MB/s IOPS=366122
+4KB Q32T1 Write: 784MB/s IOPS=200907
+
+4KB Q8T8 Read: 3852MB/s IOPS=986201
+4KB Q8T8 Write: 1691MB/s IOPS=432994
+```
