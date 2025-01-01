@@ -208,7 +208,7 @@ min/avg/max/mdev = 30.6 us / 72.6 us / 89.5 us / 16.8 us
 # latancy optimised bios setting
 ## windows 11 bare metal crystal disk mark
 
-'''
+```
 [Read]
   SEQ    1MiB (Q=  1, T= 1):  3682.776 MB/s [   3512.2 IOPS] <   284.31 us>
   RND    4KiB (Q=  1, T= 1):  1294.470 MB/s [ 316032.7 IOPS] <     3.03 us>
@@ -216,4 +216,4 @@ min/avg/max/mdev = 30.6 us / 72.6 us / 89.5 us / 16.8 us
 [Write]
   SEQ    1MiB (Q=  1, T= 1):  1277.165 MB/s [   1218.0 IOPS] <   820.20 us>
   RND    4KiB (Q=  1, T= 1):   601.285 MB/s [ 146798.1 IOPS] <     6.65 us>
-'''
+```
