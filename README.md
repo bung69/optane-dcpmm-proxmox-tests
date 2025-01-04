@@ -291,3 +291,39 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   vda: ios=5255629/0, sectors=42045032/0, merge=0/0, ticks=50205/0, in_queue=50205, util=40.03%
 ```
+## proxmox host with bb script
+
+```
+device: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+fio-3.33
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=1309MiB/s][r=335k IOPS][eta 00m:00s]
+device: (groupid=0, jobs=1): err= 0: pid=325768: Sat Jan  4 23:06:42 2025
+  read: IOPS=334k, BW=1304MiB/s (1367MB/s)(76.4GiB/60001msec)
+    slat (nsec): min=1815, max=75020, avg=2286.40, stdev=278.31
+    clat (nsec): min=435, max=75061, avg=471.22, stdev=109.86
+     lat (nsec): min=2294, max=77305, avg=2757.62, stdev=301.33
+    clat percentiles (nsec):
+     |  1.00th=[  450],  5.00th=[  454], 10.00th=[  454], 20.00th=[  458],
+     | 30.00th=[  458], 40.00th=[  458], 50.00th=[  462], 60.00th=[  462],
+     | 70.00th=[  466], 80.00th=[  466], 90.00th=[  532], 95.00th=[  540],
+     | 99.00th=[  548], 99.50th=[  548], 99.90th=[  604], 99.95th=[  788],
+     | 99.99th=[ 4080]
+   bw (  MiB/s): min= 1281, max= 1323, per=100.00%, avg=1304.35, stdev= 8.46, samples=120
+   iops        : min=328152, max=338768, avg=333913.47, stdev=2166.44, samples=120
+  lat (nsec)   : 500=87.09%, 750=12.85%, 1000=0.01%
+  lat (usec)   : 2=0.01%, 4=0.03%, 10=0.01%, 20=0.01%, 50=0.01%
+  lat (usec)   : 100=0.01%
+  cpu          : usr=20.17%, sys=79.82%, ctx=284, majf=1, minf=37
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=20031947,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=1304MiB/s (1367MB/s), 1304MiB/s-1304MiB/s (1367MB/s-1367MB/s), io=76.4GiB (82.1GB), run=60001-60001msec
+
+Disk stats (read/write):
+  pmem0: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+```
