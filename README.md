@@ -291,6 +291,45 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   vda: ios=5255629/0, sectors=42045032/0, merge=0/0, ticks=50205/0, in_queue=50205, util=40.03%
 ```
+# as above without io thread and cpu affinity
+
+```
+device: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+fio-3.36
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=120MiB/s][r=30.8k IOPS][eta 00m:00s]
+device: (groupid=0, jobs=1): err= 0: pid=2568: Sat Jan  4 23:49:15 2025
+  read: IOPS=31.3k, BW=122MiB/s (128MB/s)(7339MiB/60001msec)
+    slat (usec): min=3, max=5402, avg= 4.67, stdev= 7.35
+    clat (nsec): min=824, max=5745.7k, avg=26612.64, stdev=32743.38
+     lat (usec): min=16, max=5750, avg=31.28, stdev=33.57
+    clat percentiles (usec):
+     |  1.00th=[   24],  5.00th=[   25], 10.00th=[   25], 20.00th=[   26],
+     | 30.00th=[   26], 40.00th=[   26], 50.00th=[   26], 60.00th=[   26],
+     | 70.00th=[   27], 80.00th=[   27], 90.00th=[   28], 95.00th=[   29],
+     | 99.00th=[   33], 99.50th=[   35], 99.90th=[   67], 99.95th=[  318],
+     | 99.99th=[ 1827]
+   bw (  KiB/s): min=63126, max=129856, per=100.00%, avg=125258.93, stdev=7780.56, samples=119
+   iops        : min=15781, max=32464, avg=31314.71, stdev=1945.20, samples=119
+  lat (nsec)   : 1000=0.01%
+  lat (usec)   : 2=0.01%, 4=0.01%, 10=0.01%, 20=0.36%, 50=99.50%
+  lat (usec)   : 100=0.04%, 250=0.02%, 500=0.02%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.02%, 4=0.01%, 10=0.01%
+  cpu          : usr=8.58%, sys=31.94%, ctx=1878910, majf=0, minf=36
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=1878825,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=122MiB/s (128MB/s), 122MiB/s-122MiB/s (128MB/s-128MB/s), io=7339MiB (7696MB), run=60001-60001msec
+
+Disk stats (read/write):
+  vda: ios=2814964/0, sectors=22519712/0, merge=0/0, ticks=65280/0, in_queue=65280, util=49.91%
+```
+
+
 ## proxmox host with bb script
 
 ```
