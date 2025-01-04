@@ -217,3 +217,41 @@ min/avg/max/mdev = 30.6 us / 72.6 us / 89.5 us / 16.8 us
   SEQ    1MiB (Q=  1, T= 1):  1277.165 MB/s [   1218.0 IOPS] <   820.20 us>
   RND    4KiB (Q=  1, T= 1):   601.285 MB/s [ 146798.1 IOPS] <     6.65 us>
 ```
+
+## bb recomeneded -  disabled c states, Ubuntu VM 2 vcpu, 4 cpu affinity for vcpu and io threads, virtio single io thread etc.
+```
+device: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+fio-3.36
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=139MiB/s][r=35.6k IOPS][eta 00m:00s]
+device: (groupid=0, jobs=1): err= 0: pid=3142: Sat Jan  4 22:49:58 2025
+  read: IOPS=35.5k, BW=139MiB/s (145MB/s)(8324MiB/60001msec)
+    slat (nsec): min=4562, max=110646, avg=5841.38, stdev=802.26
+    clat (nsec): min=889, max=2492.6k, avg=21643.42, stdev=11927.76
+     lat (usec): min=17, max=2498, avg=27.48, stdev=11.93
+    clat percentiles (usec):
+     |  1.00th=[   19],  5.00th=[   21], 10.00th=[   21], 20.00th=[   21],
+     | 30.00th=[   22], 40.00th=[   22], 50.00th=[   22], 60.00th=[   22],
+     | 70.00th=[   22], 80.00th=[   23], 90.00th=[   23], 95.00th=[   23],
+     | 99.00th=[   27], 99.50th=[   29], 99.90th=[   31], 99.95th=[   32],
+     | 99.99th=[  105]
+   bw (  KiB/s): min=139448, max=147968, per=100.00%, avg=142099.52, stdev=2074.88, samples=120
+   iops        : min=34862, max=36992, avg=35524.83, stdev=518.71, samples=120
+  lat (nsec)   : 1000=0.01%
+  lat (usec)   : 2=0.01%, 4=0.04%, 10=0.23%, 20=3.46%, 50=96.25%
+  lat (usec)   : 100=0.01%, 250=0.01%, 500=0.01%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%
+  cpu          : usr=10.11%, sys=39.67%, ctx=2129541, majf=0, minf=36
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=2131021,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=139MiB/s (145MB/s), 139MiB/s-139MiB/s (145MB/s-145MB/s), io=8324MiB (8729MB), run=60001-60001msec
+
+Disk stats (read/write):
+  sdb: ios=3197327/0, sectors=25578616/0, merge=0/0, ticks=63896/0, in_queue=63896, util=48.72%
+```
+
