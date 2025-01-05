@@ -439,3 +439,73 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   pmem0: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
 ```
+## win10 vm virtio-blk, aio=native, io thread, 2vcpuaffinity 0-3
+
+```
+qd1-4k: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=windowsaio, iodepth=1
+fio-3.38
+Starting 1 thread
+qd1-4k: Laying out IO file (1 file / 1024MiB)
+Jobs: 1 (f=1): [R(1)][100.0%][r=109MiB/s][r=27.8k IOPS][eta 00m:00s]
+qd1-4k: (groupid=0, jobs=1): err= 0: pid=4132: Sun Jan 5 20:50:29 2025
+  read: IOPS=25.7k, BW=100MiB/s (105MB/s)(6017MiB/60001msec)
+    slat (usec): min=7, max=40042, avg=13.92, stdev=63.88
+    clat (nsec): min=200, max=55435k, avg=23837.39, stdev=148040.94
+     lat (usec): min=21, max=55446, avg=37.76, stdev=163.12
+    clat percentiles (usec):
+     |  1.00th=[   15],  5.00th=[   17], 10.00th=[   18], 20.00th=[   21],
+     | 30.00th=[   22], 40.00th=[   22], 50.00th=[   22], 60.00th=[   22],
+     | 70.00th=[   22], 80.00th=[   23], 90.00th=[   25], 95.00th=[   27],
+     | 99.00th=[   35], 99.50th=[   43], 99.90th=[  379], 99.95th=[  898],
+     | 99.99th=[ 4178]
+   bw (  KiB/s): min=41907, max=123624, per=100.00%, avg=103061.99, stdev=17514.92, samples=119
+   iops        : min=10476, max=30906, avg=25765.36, stdev=4378.81, samples=119
+  lat (nsec)   : 250=0.01%, 500=0.01%, 750=0.01%, 1000=0.01%
+  lat (usec)   : 4=0.64%, 10=0.12%, 20=17.20%, 50=81.61%, 100=0.16%
+  lat (usec)   : 250=0.13%, 500=0.05%, 750=0.02%, 1000=0.01%
+  lat (msec)   : 2=0.02%, 4=0.01%, 10=0.01%, 20=0.01%, 50=0.01%
+  lat (msec)   : 100=0.01%
+  cpu          : usr=8.33%, sys=31.67%, ctx=0, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=1540387,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=100MiB/s (105MB/s), 100MiB/s-100MiB/s (105MB/s-105MB/s), io=6017MiB (6309MB), run=60001-60001msec
+```
+## win10 vm virtio-scsi-single, aio=native, io thread, 2vcpuaffinity 0-3
+
+```
+qd1-4k: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=windowsaio, iodepth=1
+fio-3.38
+Starting 1 thread
+Jobs: 1 (f=0): [f(1)][100.0%][r=86.9MiB/s][r=22.3k IOPS][eta 00m:00s]
+qd1-4k: (groupid=0, jobs=1): err= 0: pid=6452: Sun Jan 5 20:55:14 2025
+  read: IOPS=23.2k, BW=90.7MiB/s (95.1MB/s)(5440MiB/60001msec)
+    slat (usec): min=10, max=1007, avg=15.17, stdev= 4.51
+    clat (nsec): min=200, max=29099k, avg=26836.70, stdev=27621.72
+     lat (usec): min=28, max=29112, avg=42.01, stdev=27.80
+    clat percentiles (usec):
+     |  1.00th=[   11],  5.00th=[   26], 10.00th=[   26], 20.00th=[   26],
+     | 30.00th=[   27], 40.00th=[   27], 50.00th=[   27], 60.00th=[   27],
+     | 70.00th=[   28], 80.00th=[   28], 90.00th=[   28], 95.00th=[   31],
+     | 99.00th=[   36], 99.50th=[   37], 99.90th=[   52], 99.95th=[   98],
+     | 99.99th=[  502]
+   bw (  KiB/s): min=88460, max=94765, per=100.00%, avg=92927.40, stdev=936.36, samples=119
+   iops        : min=22115, max=23691, avg=23231.55, stdev=234.08, samples=119
+  lat (nsec)   : 250=0.01%, 500=0.01%, 750=0.01%
+  lat (usec)   : 4=0.85%, 10=0.03%, 20=1.13%, 50=97.87%, 100=0.06%
+  lat (usec)   : 250=0.03%, 500=0.01%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%, 50=0.01%
+  cpu          : usr=5.00%, sys=46.67%, ctx=0, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=1392538,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=90.7MiB/s (95.1MB/s), 90.7MiB/s-90.7MiB/s (95.1MB/s-95.1MB/s), io=5440MiB (5704MB), run=60001-60001msec
+```
