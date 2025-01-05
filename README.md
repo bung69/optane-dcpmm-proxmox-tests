@@ -254,6 +254,42 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   sdb: ios=3197327/0, sectors=25578616/0, merge=0/0, ticks=63896/0, in_queue=63896, util=48.72%
 ```
+# as above without ip thread and cpu affinity
+```
+device: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+fio-3.36
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=85.8MiB/s][r=22.0k IOPS][eta 00m:00s]
+device: (groupid=0, jobs=1): err= 0: pid=2592: Sat Jan  4 23:55:06 2025
+  read: IOPS=24.1k, BW=94.3MiB/s (98.8MB/s)(5655MiB/60001msec)
+    slat (usec): min=4, max=1391, avg= 6.59, stdev= 2.17
+    clat (nsec): min=1009, max=3482.9k, avg=34186.92, stdev=20457.36
+     lat (usec): min=22, max=3488, avg=40.78, stdev=20.67
+    clat percentiles (usec):
+     |  1.00th=[   28],  5.00th=[   30], 10.00th=[   30], 20.00th=[   31],
+     | 30.00th=[   31], 40.00th=[   35], 50.00th=[   35], 60.00th=[   36],
+     | 70.00th=[   36], 80.00th=[   37], 90.00th=[   39], 95.00th=[   39],
+     | 99.00th=[   42], 99.50th=[   44], 99.90th=[   50], 99.95th=[   95],
+     | 99.99th=[ 1156]
+   bw (  KiB/s): min=82144, max=111440, per=100.00%, avg=96543.12, stdev=8548.87, samples=120
+   iops        : min=20536, max=27860, avg=24135.72, stdev=2137.22, samples=120
+  lat (usec)   : 2=0.01%, 4=0.01%, 10=0.01%, 20=0.01%, 50=99.89%
+  lat (usec)   : 100=0.05%, 250=0.02%, 500=0.01%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%
+  cpu          : usr=6.34%, sys=29.91%, ctx=1447782, majf=0, minf=36
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=1447790,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=94.3MiB/s (98.8MB/s), 94.3MiB/s-94.3MiB/s (98.8MB/s-98.8MB/s), io=5655MiB (5930MB), run=60001-60001msec
+
+Disk stats (read/write):
+  sdb: ios=2178331/0, sectors=17426648/0, merge=0/0, ticks=71586/0, in_queue=71586, util=65.64%
+
+```
 
 ## disabled c states, Ubuntu VM 2 vcpu, 4 cpu affinity for vcpu and io threads, virtio blk io thread etc.
 ```
