@@ -536,7 +536,16 @@ qd1-latency: (groupid=0, jobs=1): err= 0: pid=4992: Sun Jan 5 21:52:56 2025
   IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
      complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=948948,0,0,0 short=0,0,0,0 dropped=0,0,0,0qd1-4k: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=windowsaio, iodepth=1
+     issued rwts: total=948948,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=61.8MiB/s (64.8MB/s), 61.8MiB/s-61.8MiB/s (64.8MB/s-64.8MB/s), io=3707MiB (3887MB), run=60001-60001msec
+```
+## win10 vm virtio-blk, aio=native, io thread, 2vcpuaffinity 0-3, disabled hyperthreading, os power regulator
+```
+qd1-4k: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=windowsaio, iodepth=1
 fio-3.38
 Starting 1 thread
 Jobs: 1 (f=1): [R(1)][100.0%][r=147MiB/s][r=37.8k IOPS][eta 00m:00s]
@@ -566,11 +575,4 @@ qd1-4k: (groupid=0, jobs=1): err= 0: pid=992: Mon Jan 6 00:46:31 2025
 
 Run status group 0 (all jobs):
    READ: bw=148MiB/s (155MB/s), 148MiB/s-148MiB/s (155MB/s-155MB/s), io=8862MiB (9293MB), run=60001-60001msec
-```
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-Run status group 0 (all jobs):
-   READ: bw=61.8MiB/s (64.8MB/s), 61.8MiB/s-61.8MiB/s (64.8MB/s-64.8MB/s), io=3707MiB (3887MB), run=60001-60001msec
-```
-## win10 vm virtio-blk, aio=native, io thread, 2vcpuaffinity 0-3, disabled hyperthreading, os power regulator
 ```
