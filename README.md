@@ -536,9 +536,41 @@ qd1-latency: (groupid=0, jobs=1): err= 0: pid=4992: Sun Jan 5 21:52:56 2025
   IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
      submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
      complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=948948,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     issued rwts: total=948948,0,0,0 short=0,0,0,0 dropped=0,0,0,0qd1-4k: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=windowsaio, iodepth=1
+fio-3.38
+Starting 1 thread
+Jobs: 1 (f=1): [R(1)][100.0%][r=147MiB/s][r=37.8k IOPS][eta 00m:00s]
+qd1-4k: (groupid=0, jobs=1): err= 0: pid=992: Mon Jan 6 00:46:31 2025
+  read: IOPS=37.8k, BW=148MiB/s (155MB/s)(8862MiB/60001msec)
+    slat (usec): min=5, max=504, avg= 8.87, stdev= 4.19
+    clat (nsec): min=200, max=11098k, avg=16804.85, stdev=10178.54
+     lat (usec): min=15, max=11109, avg=25.68, stdev=10.95
+    clat percentiles (usec):
+     |  1.00th=[   14],  5.00th=[   16], 10.00th=[   16], 20.00th=[   17],
+     | 30.00th=[   17], 40.00th=[   17], 50.00th=[   17], 60.00th=[   17],
+     | 70.00th=[   17], 80.00th=[   18], 90.00th=[   18], 95.00th=[   20],
+     | 99.00th=[   25], 99.50th=[   27], 99.90th=[   38], 99.95th=[  128],
+     | 99.99th=[  281]
+   bw (  KiB/s): min=75856, max=153763, per=99.69%, avg=150770.38, stdev=7049.51, samples=120
+   iops        : min=18964, max=38440, avg=37692.29, stdev=1762.36, samples=120
+  lat (nsec)   : 250=0.01%, 500=0.01%, 750=0.01%
+  lat (usec)   : 4=0.46%, 10=0.02%, 20=95.31%, 50=4.12%, 100=0.02%
+  lat (usec)   : 250=0.05%, 500=0.01%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%, 20=0.01%
+  cpu          : usr=8.33%, sys=36.67%, ctx=0, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=2268685,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=148MiB/s (155MB/s), 148MiB/s-148MiB/s (155MB/s-155MB/s), io=8862MiB (9293MB), run=60001-60001msec
+```
      latency   : target=0, window=0, percentile=100.00%, depth=1
 
 Run status group 0 (all jobs):
    READ: bw=61.8MiB/s (64.8MB/s), 61.8MiB/s-61.8MiB/s (64.8MB/s-64.8MB/s), io=3707MiB (3887MB), run=60001-60001msec
+```
+## win10 vm virtio-blk, aio=native, io thread, 2vcpuaffinity 0-3, disabled hyperthreading, os power regulator
 ```
