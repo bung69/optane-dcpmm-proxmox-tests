@@ -576,3 +576,36 @@ qd1-4k: (groupid=0, jobs=1): err= 0: pid=992: Mon Jan 6 00:46:31 2025
 Run status group 0 (all jobs):
    READ: bw=148MiB/s (155MB/s), 148MiB/s-148MiB/s (155MB/s-155MB/s), io=8862MiB (9293MB), run=60001-60001msec
 ```
+## win11 vm virtio-blk, aio=native, io thread, 2vcpuaffinity 0-3 disabled hyperthreading, os power regulator
+```
+qd1-latency: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=windowsaio, iodepth=1
+fio-3.38
+Starting 1 thread
+Jobs: 1 (f=0): [f(1)][100.0%][r=60.2MiB/s][r=15.4k IOPS][eta 00m:00s]
+qd1-latency: (groupid=0, jobs=1): err= 0: pid=7212: Mon Jan 6 01:05:17 2025
+  read: IOPS=19.1k, BW=74.6MiB/s (78.3MB/s)(4478MiB/60001msec)
+    slat (usec): min=7, max=30947, avg=13.52, stdev=137.19
+    clat (usec): min=3, max=56323, avg=37.96, stdev=248.02
+     lat (usec): min=23, max=56332, avg=51.49, stdev=284.07
+    clat percentiles (usec):
+     |  1.00th=[   17],  5.00th=[   18], 10.00th=[   18], 20.00th=[   23],
+     | 30.00th=[   38], 40.00th=[   39], 50.00th=[   40], 60.00th=[   40],
+     | 70.00th=[   40], 80.00th=[   41], 90.00th=[   42], 95.00th=[   44],
+     | 99.00th=[   51], 99.50th=[   60], 99.90th=[  233], 99.95th=[  469],
+     | 99.99th=[14091]
+   bw (  KiB/s): min=56746, max=123807, per=100.00%, avg=76476.36, stdev=10641.55, samples=119
+   iops        : min=14186, max=30951, avg=19118.82, stdev=2660.38, samples=119
+  lat (usec)   : 4=0.01%, 10=0.09%, 20=14.29%, 50=84.52%, 100=0.89%
+  lat (usec)   : 250=0.11%, 500=0.04%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.02%, 4=0.01%, 10=0.01%, 20=0.01%, 50=0.01%
+  lat (msec)   : 100=0.01%
+  cpu          : usr=3.33%, sys=23.33%, ctx=0, majf=0, minf=0
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=1146471,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=74.6MiB/s (78.3MB/s), 74.6MiB/s-74.6MiB/s (78.3MB/s-78.3MB/s), io=4478MiB (4696MB), run=60001-60001msec
+```
