@@ -609,3 +609,13 @@ qd1-latency: (groupid=0, jobs=1): err= 0: pid=7212: Mon Jan 6 01:05:17 2025
 Run status group 0 (all jobs):
    READ: bw=74.6MiB/s (78.3MB/s), 74.6MiB/s-74.6MiB/s (78.3MB/s-78.3MB/s), io=4478MiB (4696MB), run=60001-60001msec
 ```
+
+```
+You have Device Encryption turned on. To disable that:
+
+- Open Command Prompt (CMD) as Admin
+
+- Type command manage-bde -off C: 
+
+- You can check decrypt status with command manage-bde -status C:
+```
