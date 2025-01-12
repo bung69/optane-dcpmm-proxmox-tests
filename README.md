@@ -727,3 +727,41 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   vda: ios=6188219/0, sectors=49505752/0, merge=0/0, ticks=36637/0, in_queue=36637, util=45.17%
 ```
+
+## ubuntu vm spdk vhost virtio block hyperthreading disabled
+
+```
+device: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+fio-3.36
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=462MiB/s][r=118k IOPS][eta 00m:00s]
+device: (groupid=0, jobs=1): err= 0: pid=3801: Sun Jan 12 18:56:50 2025
+  read: IOPS=118k, BW=460MiB/s (482MB/s)(27.0GiB/60001msec)
+    slat (nsec): min=1442, max=2761.8k, avg=1745.66, stdev=1962.87
+    clat (nsec): min=501, max=3222.9k, avg=6429.35, stdev=11650.21
+     lat (usec): min=5, max=3224, avg= 8.18, stdev=11.82
+    clat percentiles (nsec):
+     |  1.00th=[ 5024],  5.00th=[ 5088], 10.00th=[ 5152], 20.00th=[ 5216],
+     | 30.00th=[ 5280], 40.00th=[ 5280], 50.00th=[ 5344], 60.00th=[ 5408],
+     | 70.00th=[ 5536], 80.00th=[ 6112], 90.00th=[10688], 95.00th=[10944],
+     | 99.00th=[11584], 99.50th=[14656], 99.90th=[21120], 99.95th=[24192],
+     | 99.99th=[27008]
+   bw (  KiB/s): min=458104, max=487592, per=100.00%, avg=471246.99, stdev=4447.26, samples=119
+   iops        : min=114526, max=121898, avg=117811.80, stdev=1111.75, samples=119
+  lat (nsec)   : 750=0.04%, 1000=0.01%
+  lat (usec)   : 2=0.01%, 4=0.01%, 10=84.52%, 20=15.13%, 50=0.28%
+  lat (usec)   : 100=0.01%, 250=0.01%, 500=0.01%, 750=0.01%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%
+  cpu          : usr=16.84%, sys=51.16%, ctx=7058789, majf=0, minf=16
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=7066137,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=460MiB/s (482MB/s), 460MiB/s-460MiB/s (482MB/s-482MB/s), io=27.0GiB (28.9GB), run=60001-60001msec
+
+Disk stats (read/write):
+  vda: ios=7053912/0, sectors=56431296/0, merge=0/0, ticks=31836/0, in_queue=31836, util=32.22%
+```
