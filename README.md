@@ -619,3 +619,37 @@ You have Device Encryption turned on. To disable that:
 
 - You can check decrypt status with command manage-bde -status C:
 ```
+## proxmox host with bb script hyperthreadding disabled os power regulator
+```
+device: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=1
+fio-3.33
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=1623MiB/s][r=416k IOPS][eta 00m:00s]
+device: (groupid=0, jobs=1): err= 0: pid=136006: Sun Jan 12 11:14:04 2025
+  read: IOPS=418k, BW=1633MiB/s (1712MB/s)(95.7GiB/60001msec)
+    slat (nsec): min=1508, max=67088, avg=1909.60, stdev=285.16
+    clat (nsec): min=298, max=61626, avg=321.97, stdev=109.00
+     lat (nsec): min=1823, max=67650, avg=2231.57, stdev=308.20
+    clat percentiles (nsec):
+     |  1.00th=[  306],  5.00th=[  306], 10.00th=[  310], 20.00th=[  310],
+     | 30.00th=[  310], 40.00th=[  310], 50.00th=[  314], 60.00th=[  314],
+     | 70.00th=[  314], 80.00th=[  326], 90.00th=[  366], 95.00th=[  366],
+     | 99.00th=[  386], 99.50th=[  406], 99.90th=[  470], 99.95th=[  510],
+     | 99.99th=[ 3536]
+   bw (  MiB/s): min= 1601, max= 1656, per=100.00%, avg=1633.49, stdev=12.50, samples=120
+   iops        : min=410102, max=424112, avg=418172.29, stdev=3200.56, samples=120
+  lat (nsec)   : 500=99.94%, 750=0.02%, 1000=0.01%
+  lat (usec)   : 4=0.03%, 10=0.01%, 20=0.01%, 50=0.01%, 100=0.01%
+  cpu          : usr=17.25%, sys=82.74%, ctx=323, majf=1, minf=38
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=25077247,0,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=1633MiB/s (1712MB/s), 1633MiB/s-1633MiB/s (1712MB/s-1712MB/s), io=95.7GiB (103GB), run=60001-60001msec
+
+Disk stats (read/write):
+  pmem0: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%
+```
