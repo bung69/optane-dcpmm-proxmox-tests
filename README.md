@@ -1,3 +1,5 @@
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+
 passthrough only seems to work with 512b sectors
 
 args: -machine nvdimm=on,nvdimm-persistence=mem-ctrl -m slots=3,maxmem=650G -object memory-backend-file,id=mem1,share,mem-path=/mnt/pmem0.4,size=100G,align=128M -device nvdimm,memdev=mem1,id=nv1,label-size=2M -object memory-backend-file,id=mem2,share,mem-path=/dev/dax0.5,size=100G,align=128M -device nvdimm,memdev=mem2,id=nv2,label-size=2M
