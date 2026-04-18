@@ -3,6 +3,7 @@ After lots of testing and pritty much giving up on getting 4kqd1 performance in 
 
 i suspect this result is mostly down to the polling though it could be related to a bug a read another used had where adding iothread to the args increased performance even though iothread was allready checked in proxmox gui. 
 
+
 ### win 10 virtio-blk + poll on raw pmem 4kqd1 125MB/s 30,558 iops 32μs
 standard os control power settings, intel_pstate powersave, hyperthreading enabled, c states enabled.
 windows defender was disabled
@@ -12,6 +13,20 @@ args: -object iothread,id=dedicated1,poll-max-ns=192000,poll-grow=2,poll-shrink=
 poll-max-ns=16000: best efficiency, 32μs QD1 latency, ~1800 MB/s sequential.
 poll-max-ns=32000: 30μs QD1 latency, probably ~2500 MB/s sequential.
 poll-max-ns=192000: 32μs QD1 latency, ~3100 MB/s sequential, burns a core always.
+
+### summery of the results below:
+
+Host 4k                                                                             2.8us 334k iops
+ubuntu VM virtio scsi single                                                        41us 24k iops
+ubuntu VM virtio scsi single + io thread + affinity                                 27us 35k iops
+ubuntu VM virtio block                                                              31us 31k iops
+ubuntu VM virtio block + io thread + affinity                                       16us 58k iops
+ubuntu VM virtio block + io thread + affinity + haltpoll                            12us 78k iops
+windows10 VM virtio block                                                           37us 26k iops
+windows10 VM virtio scsi single                                                     42us 23k iops
+windows10 VM virtio block disabled hyperthreading                                   26us 38k iops
+windows11 default VM virtio block disabled hyperthreading                           51us 19k iops
+ubuntu VM virtio block + io thread + affinity + haltpoll + disabled hyperthreading  9.3us 103k iops
 
 
 # Testing varios options using optane-dcpmm to get low latancy / high iops qd1 storage in to a windows VM
