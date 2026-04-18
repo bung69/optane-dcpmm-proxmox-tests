@@ -1,4 +1,18 @@
-powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+## TLDR
+After lots of testing and pritty much giving up on getting 4kqd1 performance in a windows anywhere close to that of a linux guest with any kind of Virtio, with a little help from claude these args worked.   further testing is now needed to compare against virt io scsi,  optimum polling and numbers of threads for decent throughput numbers etc and proper FIO testing rather than CDM
+
+i suspect this result is mostly down to the polling though it could be related to a bug a read another used had where adding iothread to the args increased performance even though iothread was allready checked in proxmox gui. 
+
+### win 10 virtio-blk + poll on raw pmem 4kqd1 125MB/s 30,558 iops 32μs
+standard os control power settings, intel_pstate powersave, hyperthreading enabled, c states enabled.
+windows defender was disabled
+```
+args: -object iothread,id=dedicated1,poll-max-ns=192000,poll-grow=2,poll-shrink=1 -blockdev driver=host_device,node-name=pmem0,filename=/dev/pmem0,cache.direct=on,aio=native -device virtio-blk-pci,drive=pmem0,iothread=dedicated1,num-queues=4,id=pmemblk,bus=pci.0,addr=0x1e 
+```
+
+
+
+# Testing varios options using optane-dcpmm to get low latancy / high iops qd1 storage in to a windows VM
 
 passthrough only seems to work with 512b sectors
 
