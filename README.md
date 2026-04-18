@@ -9,7 +9,9 @@ windows defender was disabled
 ```
 args: -object iothread,id=dedicated1,poll-max-ns=192000,poll-grow=2,poll-shrink=1 -blockdev driver=host_device,node-name=pmem0,filename=/dev/pmem0,cache.direct=on,aio=native -device virtio-blk-pci,drive=pmem0,iothread=dedicated1,num-queues=4,id=pmemblk,bus=pci.0,addr=0x1e 
 ```
-
+poll-max-ns=16000: best efficiency, 32μs QD1 latency, ~1800 MB/s sequential.
+poll-max-ns=32000: 30μs QD1 latency, probably ~2500 MB/s sequential.
+poll-max-ns=192000: 32μs QD1 latency, ~3100 MB/s sequential, burns a core always.
 
 
 # Testing varios options using optane-dcpmm to get low latancy / high iops qd1 storage in to a windows VM
